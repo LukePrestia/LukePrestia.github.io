@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descargar F1 Explained</title>
+    <title>F1 Explained</title>
     <style>
         body {
             font-family: Arial, sans-serif;
