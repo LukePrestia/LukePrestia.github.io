@@ -73,7 +73,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" alt="Logo de F1" class="logo">
         <h1>Descargar F1 Explained</h1>
         <p>Selecciona la versión para descargar:</p>
-        <a href="https://drive.google.com/uc?export=download&id=ID_DE_VERSION_PC" download class="download-button">
+        <a href="https://drive.usercontent.google.com/download?id=1AqZ_fGqvbcqpa9l9ZU3Scq_oaD7guXkf&export=download&authuser=0" download class="download-button">
             <img src="https://img.icons8.com/ios-filled/50/ffffff/laptop.png" alt="PC" class="button-icon">
             Versión para PC
         </a>
