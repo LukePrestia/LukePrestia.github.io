@@ -3,85 +3,720 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1 Explained</title>
+    <title>Mis Aplicaciones</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container {
-            background-color: #ffffff;
-            padding: 20px 40px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            width: 90%;
-        }
-        h1 {
-            color: #e10600;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        p {
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
-            font-size: 18px;
+            line-height: 1.6;
+            min-height: 100vh;
         }
-        .author {
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
+
+        .header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .download-button {
-            display: inline-flex;
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #ffffff;
-            background-color: #e10600;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #555;
             text-decoration: none;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-            margin-right: 10px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
         }
-        .download-button:hover {
-            background-color: #c00000;
+
+        nav a:hover {
+            color: #764ba2;
         }
-        .button-icon {
-            margin-right: 8px;
-            width: 24px;
-            height: 24px;
+
+        nav a.active {
+            color: #764ba2;
         }
-        .logo {
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #764ba2;
+            transition: 0.3s;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-icon {
             width: 100px;
-            margin-bottom: 20px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .app-card h3 {
+            font-size: 1.8rem;
+            color: #764ba2;
+            margin-bottom: 1rem;
+        }
+
+        .app-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .learn-more {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more:hover {
+            transform: scale(1.05);
+        }
+
+        .app-detail {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-detail-header {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .app-detail-icon {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .app-detail-info h2 {
+            font-size: 2.5rem;
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-detail-info p {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: white;
+            color: #764ba2;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background: #f0f2f5;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h4 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .feature p {
+            color: #666;
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .info-section h2 {
+            font-size: 2.5rem;
+            color: #764ba2;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-section p {
+            color: #555;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 1rem auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #667eea;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .app-detail-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .app-detail-icon {
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" alt="Logo de F1" class="logo">
-        <h1>Descargar F1 Explained</h1>
-        <p>Selecciona la versión para descargar:</p>
-        <a href="https://drive.google.com/file/d/1gr6JdNCvGDn45qX42aEzp9llE7GFsN0y/view?usp=drive_link" download class="download-button">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/laptop.png" alt="PC" class="button-icon">
-            Versión para PC
-        </a>
-        <a href="https://drive.google.com/file/d/1YmqeEulhzvuVjUH8nE5SWA71ATndp8Sh/view?usp=drive_link" download class="download-button">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/smartphone.png" alt="APK" class="button-icon">
-            Versión APK
-        </a>
-        <p class="author">Autor: Luca Prestia</p>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo" onclick="showPage('home')">
+                <div class="logo-icon">🚀</div>
+                <h1>DevApps</h1>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav">
+                <a href="#" onclick="showPage('home')" class="active" data-page="home">Inicio</a>
+                <a href="#" onclick="showPage('fulbo')" data-page="fulbo">Fulbo</a>
+                <a href="#" onclick="showPage('f1')" data-page="f1">F1-Explained</a>
+                <a href="#" onclick="showPage('tracker')" data-page="tracker">Games Tracker</a>
+                <a href="#" onclick="showPage('info')" data-page="info">Sobre Mí</a>
+            </nav>
+        </div>
     </div>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="container">
+            <div class="hero">
+                <h2>Descubre Mis Aplicaciones</h2>
+                <p>Soluciones innovadoras para tu día a día</p>
+            </div>
+
+            <div class="apps-grid">
+                <div class="app-card" onclick="showPage('fulbo')">
+                    <div class="app-icon">⚽</div>
+                    <h3>Fulbo</h3>
+                    <p>Organiza tus partidos de fútbol, gestiona equipos y lleva estadísticas detalladas.</p>
+                    <span class="learn-more">Ver más</span>
+                </div>
+
+                <div class="app-card" onclick="showPage('f1')">
+                    <div class="app-icon">🏎️</div>
+                    <h3>F1-Explained</h3>
+                    <p>Todo lo que necesitas saber sobre la Fórmula 1, desde reglas hasta estrategias.</p>
+                    <span class="learn-more">Ver más</span>
+                </div>
+
+                <div class="app-card" onclick="showPage('tracker')">
+                    <div class="app-icon">🎮</div>
+                    <h3>Games Achievements Tracker</h3>
+                    <p>Rastrea tus logros en videojuegos y comparte tu progreso con la comunidad.</p>
+                    <span class="learn-more">Ver más</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULBO PAGE -->
+    <div id="fulbo" class="page">
+        <div class="container">
+            <a href="#" class="back-btn" onclick="showPage('home')">← Volver al inicio</a>
+            <div class="app-detail">
+                <div class="app-detail-header">
+                    <div class="app-detail-icon">⚽</div>
+                    <div class="app-detail-info">
+                        <h2>Fulbo</h2>
+                        <p>Tu compañero ideal para organizar partidos de fútbol</p>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <h3 style="color: white; margin-bottom: 0.5rem;">¿Listo para empezar?</h3>
+                    <p style="color: rgba(255,255,255,0.9);">Descarga Fulbo y organiza tus partidos hoy mismo</p>
+                    <a href="#" class="download-btn">⬇ Descargar Fulbo</a>
+                </div>
+
+                <h3 style="color: #764ba2; font-size: 2rem; margin-bottom: 1.5rem;">Características Principales</h3>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">👥</div>
+                        <h4>Gestión de Equipos</h4>
+                        <p>Crea y administra equipos, añade jugadores y asigna posiciones fácilmente.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📅</div>
+                        <h4>Calendario de Partidos</h4>
+                        <p>Programa encuentros, envía notificaciones y mantén a todos informados.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <h4>Estadísticas Detalladas</h4>
+                        <p>Lleva un registro de goles, asistencias y rendimiento de cada jugador.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔔</div>
+                        <h4>Notificaciones</h4>
+                        <p>Recibe alertas automáticas sobre próximos partidos y confirmaciones.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🏆</div>
+                        <h4>Torneos</h4>
+                        <p>Organiza torneos completos con tablas de posiciones y fixture automático.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💬</div>
+                        <h4>Chat Integrado</h4>
+                        <p>Comunícate con tu equipo directamente desde la app.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: #764ba2; font-size: 1.8rem; margin-bottom: 1rem;">¿Cómo funciona?</h3>
+                    <p style="color: #555; line-height: 1.8;">
+                        Fulbo simplifica la organización de partidos de fútbol. Crea tu equipo, invita a tus amigos, 
+                        programa los partidos y deja que la app se encargue del resto. Con notificaciones automáticas, 
+                        estadísticas en tiempo real y un sistema de gestión intuitivo, nunca fue tan fácil coordinar 
+                        tus encuentros deportivos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- F1-EXPLAINED PAGE -->
+    <div id="f1" class="page">
+        <div class="container">
+            <a href="#" class="back-btn" onclick="showPage('home')">← Volver al inicio</a>
+            <div class="app-detail">
+                <div class="app-detail-header">
+                    <div class="app-detail-icon">🏎️</div>
+                    <div class="app-detail-info">
+                        <h2>F1-Explained</h2>
+                        <p>Tu guía completa del mundo de la Fórmula 1</p>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <h3 style="color: white; margin-bottom: 0.5rem;">¿Listo para la carrera?</h3>
+                    <p style="color: rgba(255,255,255,0.9);">Descarga F1-Explained y conviértete en un experto</p>
+                    <a href="#" class="download-btn">⬇ Descargar F1-Explained</a>
+                </div>
+
+                <h3 style="color: #764ba2; font-size: 2rem; margin-bottom: 1.5rem;">Características Principales</h3>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">📖</div>
+                        <h4>Reglamento Completo</h4>
+                        <p>Aprende todas las reglas de la F1 explicadas de manera clara y concisa.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔧</div>
+                        <h4>Análisis Técnico</h4>
+                        <p>Entiende cómo funcionan los monoplazas y la tecnología detrás de ellos.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Estrategias de Carrera</h4>
+                        <p>Descubre las tácticas que usan los equipos para ganar carreras.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📚</div>
+                        <h4>Historia de la F1</h4>
+                        <p>Explora la rica historia del deporte motor más prestigioso del mundo.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🗣️</div>
+                        <h4>Glosario Completo</h4>
+                        <p>Aprende todos los términos técnicos usados en la Fórmula 1.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🏁</div>
+                        <h4>Circuitos Detallados</h4>
+                        <p>Conoce cada pista del calendario con análisis sector por sector.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: #764ba2; font-size: 1.8rem; margin-bottom: 1rem;">¿Para quién es?</h3>
+                    <p style="color: #555; line-height: 1.8;">
+                        F1-Explained está diseñada tanto para nuevos fans que quieren entender el deporte como para 
+                        aficionados experimentados que buscan profundizar sus conocimientos. Con explicaciones 
+                        detalladas, diagramas interactivos y contenido actualizado, es tu compañero perfecto para 
+                        disfrutar cada carrera al máximo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GAMES TRACKER PAGE -->
+    <div id="tracker" class="page">
+        <div class="container">
+            <a href="#" class="back-btn" onclick="showPage('home')">← Volver al inicio</a>
+            <div class="app-detail">
+                <div class="app-detail-header">
+                    <div class="app-detail-icon">🎮</div>
+                    <div class="app-detail-info">
+                        <h2>Games Achievements Tracker</h2>
+                        <p>El control definitivo de tus logros en videojuegos</p>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <h3 style="color: white; margin-bottom: 0.5rem;">¿Listo para trackear?</h3>
+                    <p style="color: rgba(255,255,255,0.9);">Descarga el tracker y no pierdas ningún logro</p>
+                    <a href="#" class="download-btn">⬇ Descargar Tracker</a>
+                </div>
+
+                <h3 style="color: #764ba2; font-size: 2rem; margin-bottom: 1.5rem;">Características Principales</h3>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">🏆</div>
+                        <h4>Seguimiento de Logros</h4>
+                        <p>Registra todos tus achievements de múltiples plataformas en un solo lugar.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <h4>Estadísticas Personales</h4>
+                        <p>Visualiza tu progreso con gráficos detallados y métricas personalizadas.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔄</div>
+                        <h4>Sincronización</h4>
+                        <p>Conecta con PlayStation, Xbox, Steam y más plataformas automáticamente.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Metas y Objetivos</h4>
+                        <p>Establece objetivos personales y recibe notificaciones de progreso.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">👥</div>
+                        <h4>Comunidad</h4>
+                        <p>Comparte tus logros y compite con amigos en tablas de clasificación.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔍</div>
+                        <h4>Base de Datos</h4>
+                        <p>Accede a una extensa base de datos con miles de juegos y logros.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: #764ba2; font-size: 1.8rem; margin-bottom: 1rem;">¿Por qué usar el Tracker?</h3>
+                    <p style="color: #555; line-height: 1.8;">
+                        Si eres un completionista o simplemente te gusta llevar un control de tu progreso en juegos, 
+                        Games Achievements Tracker es la herramienta perfecta. Centraliza toda tu información de 
+                        logros, te ayuda a descubrir achievements que te faltan y te permite compartir tus éxitos 
+                        con una comunidad de jugadores apasionados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO PAGE -->
+    <div id="info" class="page">
+        <div class="container">
+            <a href="#" class="back-btn" onclick="showPage('home')">← Volver al inicio</a>
+            <div class="info-section">
+                <h2>👨‍💻 Sobre Mí</h2>
+                <p>
+                    ¡Hola! Soy un desarrollador apasionado por crear aplicaciones que simplifiquen la vida de las personas. 
+                    Con experiencia en desarrollo móvil y web, me especializo en crear soluciones intuitivas y funcionales.
+                </p>
+                <p>
+                    Cada una de estas aplicaciones nace de una necesidad real que he identificado y transformado en una 
+                    herramienta útil. Mi objetivo es seguir desarrollando apps que agreguen valor a la vida cotidiana de los usuarios.
+                </p>
+                <p>
+                    Mi stack de tecnologías incluye desarrollo multiplataforma, diseño de interfaces intuitivas, 
+                    y un enfoque constante en la experiencia del usuario. Creo en el poder de la tecnología para 
+                    resolver problemas reales y hacer la vida más fácil.
+                </p>
+                <p>
+                    Si tienes alguna pregunta, sugerencia o simplemente quieres conectar, no dudes en contactarme. 
+                    ¡Estoy siempre abierto a feedback y nuevas ideas!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 DevApps. Todos los derechos reservados.</p>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Ocultar todas las páginas
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Mostrar la página seleccionada
+            document.getElementById(pageId).classList.add('active');
+            
+            // Actualizar navbar activo
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Cerrar menú móvil si está abierto
+            document.getElementById('nav').classList.remove('active');
+            
+            // Scroll al top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            return false;
+        }
+
+        function toggleMenu() {
+            document.getElementById('nav').classList.toggle('active');
+        }
+
+        // Animación de entrada para las tarjetas
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.app-card, .app-detail, .info-section').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
