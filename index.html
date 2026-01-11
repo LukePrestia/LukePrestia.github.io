@@ -305,26 +305,69 @@
             color: #666;
         }
 
-        .info-section {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
+        /* ============================================
+   INFO SECTION
+   ============================================ */
 
-        .info-section h2 {
-            font-size: 2.5rem;
-            color: #764ba2;
-            margin-bottom: 1.5rem;
-        }
+.info-section {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
 
-        .info-section p {
-            color: #555;
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 1rem auto;
-        }
+.info-section h2 {
+    font-size: 2.5rem;
+    color: #764ba2;
+    margin-bottom: 1.5rem;
+}
+
+.info-section p {
+    color: #555;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 1rem auto;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.linkedin-btn {
+    background: #0077b5;
+    color: white;
+}
+
+.linkedin-btn:hover {
+    background: #005885;
+}
+
+.contact-btn svg {
+    width: 24px;
+    height: 24px;
+}
 
         .back-btn {
             display: inline-block;
@@ -617,22 +660,29 @@
                 <h2>👨‍💻 Sobre Mí</h2>
                 <p>
                     ¡Hola! Soy un desarrollador apasionado por crear aplicaciones que simplifiquen la vida de las personas. 
-                    Con experiencia en desarrollo móvil y web, me especializo en crear soluciones intuitivas y funcionales.
+                    Con experiencia en desarrollo móvil, web y de escritorio, me especializo en crear soluciones intuitivas y funcionales.
                 </p>
                 <p>
                     Cada una de estas aplicaciones nace de una necesidad real que he identificado y transformado en una 
                     herramienta útil. Mi objetivo es seguir desarrollando apps que agreguen valor a la vida cotidiana de los usuarios.
                 </p>
                 <p>
-                    Mi stack de tecnologías incluye desarrollo multiplataforma, diseño de interfaces intuitivas, 
-                    y un enfoque constante en la experiencia del usuario. Creo en el poder de la tecnología para 
-                    resolver problemas reales y hacer la vida más fácil.
+                    Actualmente me encuentro trabajando para el Banco Ciudad automatizando procesos mediante herramientas de RPA e IA.
                 </p>
                 <p>
                     Si tienes alguna pregunta, sugerencia o simplemente quieres conectar, no dudes en contactarme. 
                     ¡Estoy siempre abierto a feedback y nuevas ideas!
                 </p>
+                
             </div>
+                <div class="contact-buttons">
+                    <a href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener noreferrer" class="contact-btn linkedin-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        Conectar en LinkedIn
+                    </a>
+                </div>
         </div>
     </div>
 
